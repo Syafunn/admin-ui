@@ -1,6 +1,7 @@
 import React from "react"; 
 import Logo from "../Elements/Logo";
 import Input from "../Elements/Input";
+import NotificationsIcon from '@mui/icons-material/Notifications';
 
 function MainLayout(props) {
   const { children } = props;
@@ -53,7 +54,7 @@ function MainLayout(props) {
                         <div className="text-gray-03 hidden sm:block">May 19, 2023</div> 
                     </div>
                     <div className="flex items-center">
-                        <div className="me-10">Icon</div> 
+                        <div className="me-10"><NotificationsIcon className="text-gray-01 scale-110"/></div> 
                         <Input backroundColor="bg-white" border="border-white" />
                     </div>
                 </header>
