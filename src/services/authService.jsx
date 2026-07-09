@@ -6,7 +6,7 @@ export const loginService = async (email, password) => {
   try {
     const response = await axios.post(
       `${API_URL}/login`,
-      { email, password }, 
+      { email, password }
     );
 
     return response.data;
@@ -21,17 +21,32 @@ export const logoutService = async () => {
 
     await axios.post(
       `${API_URL}/logout`, 
-     {},
-	   {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      }, 
-     }
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }, 
+      }
     );
   } catch (error) {
     throw {
       status: error.response?.status,
       msg: error.response?.data?.msg,
     };
+  }
+};
+
+// --- TAMBAHAN BARU UNTUK REGISTER ---
+export const registerService = async (name, email, password) => {
+  try {
+    const response = await axios.post(
+      `${API_URL}/register`,
+      { name, email, password }
+    );
+
+    return response.data;
+  } catch (error) {
+    // Menangkap pesan eror dari backend (misal: email sudah digunakan)
+    throw error.response?.data || { msg: "Register gagal" };
   }
 };
